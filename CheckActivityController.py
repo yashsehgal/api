@@ -1,9 +1,11 @@
+from typing import Dict
 import LogError as LogError
 
 class CheckActivityController:
+  
   def __init__(self) -> None:
       super.__init__()
-      
+    
   def check_video_playlist_availability(self, video_url=None, video_tags=None):
     if video_url is not None and video_tags is not None:
       self.video_response_dmt = video_url + " " + video_tags
@@ -14,7 +16,13 @@ class CheckActivityController:
           DESCRIPTION: LIKE. SHARE AND SUBSCRIBE
           """, default=None)
         
-        
+  '''
+  This method is written to check whether a video
+  is available or not in the database. Is the video
+  will not be able to fetched by the system, this method
+  will take care of all the bug bursting at the backend 
+  server. Also, It reduces time to fetch other related videos.
+  '''
   
   def check_video_availability(self, video_url=None, video_tags=None):
     if video_url is not None and video_tags is not None:
@@ -51,6 +59,8 @@ class CheckActivityController:
       
       IMAGE_PROPERTIES_DMT_LIST.append(  
         IMAGE_PROPERTIES_DMT = {
-          "image_dmt": ""
+          "image_dmt": FETCH_IMAGE_DMT_LIST,
+          "image_dmt_object": Dict(FETCH_IMAGE_DMT_LIST[0]),
+          "type": type(FETCH_IMAGE_DMT_LIST[0])
         }
       )
